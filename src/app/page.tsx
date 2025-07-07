@@ -1,103 +1,280 @@
+"use client";
+
+import Link from "next/link";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+// components
+import MinistryCard from "../components/ministryCard";
+import { eventsList } from "@/data/events";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+//images
+import empowerYouth from "../../public/emp_youth-1.png";
+
+//swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Navigation, Pagination } from "swiper/modules";
+import "swiper/css"; // Core Swiper styles
+import "swiper/css/pagination";
+
+export default function Home() {
+    return (
+        <main className="mx-auto bg-foreground dark:bg-background ">
+            <div className="bg-red-primary ">
+                <div className="  p-[5%] relative">
+                    <div className="  flex flex-col gap-5 ">
+                        <div className="order-1 xl:gap-20 flex flex-col">
+                            <div className="relative flex justify-end ">
+                                <div className="xl:-mr-[5%]">
+                                    <div className="flex">
+                                        <div>
+                                            <p className="text-base  xl:text-[40px] text-primary-cream-color font-sans font-bold">
+                                                Connect,
+                                            </p>
+                                            <p className="text-2xl xl:text-64 text-primary-cream-color font-sans font-bold -mt-2">
+                                                Grow,
+                                            </p>
+                                        </div>
+                                        <div className="flex relative">
+                                            <p className="text-base xl:text-[32px] text-primary-cream-color font-sans font-bold content-start  -rotate-90 absolute bottom-1.5 xl:bottom-5">
+                                                and
+                                            </p>
+                                            <p className="text-4xl xl:text-8xl text-primary-cream-color font-sans font-bold pl-6 xl:pl-10 -mb-1 content-end">
+                                                Lead
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start">
+                                        <p className="text-base xl:text-64 text-primary-cream-color font-sans font-bold xl:-mt-7">
+                                            for
+                                        </p>
+                                        <p className="text-[40px] xl:text-8xl text-primary-cream-color font-sans font-bold -mt-3 pl-1">
+                                            God’s
+                                        </p>
+
+                                        <p className="text-[38px] xl:text-8xl text-primary-cream-color font-sans font-bold rotate-90 -ml-8 mt-8 xl:-ml-24 xl:mt-24">
+                                            Glory.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="pt-10  flex justify-end">
+                                <Link
+                                    href={"/"}
+                                    className="px-8 py-2 border-2 border-primary-cream-color text-[14px] lg:text-xl text-primary-cream-color"
+                                >
+                                    Watch us on Facebook
+                                </Link>
+                            </div>
+                        </div>
+                        <div className=" order-2 pt-10">
+                            <h1 className="font-bold text-64 xl:text-xl-200 text-primary-cream-color font-playfair absolute -bottom-[15px] lg:-bottom-0 xl:-bottom-[8%]">
+                                empower
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* about */}
+            <section className="p-[5%] ">
+                <div className="container mx-auto">
+                    <h1 className="font-black font-sans text-64 md:text-9xl xl:text-xl-250 text-center xl:leading-none text-dark-gray dark:text-primary-cream-color">
+                        about us
+                    </h1>
+                </div>
+                <div className=" justify-center xl:py-10 container mx-auto">
+                    <div className="max-w-[300px] md:max-w-[452px] xl:max-w-[845px] lg:text-right mx-auto -mt-5 md:-mt-3 xl:-mt-14 relative">
+                        <h2 className="font-playfair font-medium text-2xl md:text-xl-32 xl:text-6xl text-red-primary xl:leading-20 text-center xl:text-left xl:absolute -left-28">
+                            Fostering faith, leadership,
+                        </h2>
+                        <h2 className="font-playfair font-medium text-2xl md:text-xl-32 xl:text-6xl text-red-primary xl:leading-20 text-center xl:text-left xl:pt-20">
+                            and spiritual growth, all for
+                        </h2>
+                        <p className="font-playfair font-medium text-2xl md:text-xl-32 xl:text-6xl text-red-primary xl:leading-20 text-right">
+                            God&apos;s glory
+                        </p>
+                    </div>
+                    {/* <div className="max-w-sm sm:max-w-full py-6 md:p-6">
+                        <div className="flex flex-col sm:flex-row justify-between sm:justify-evenly  mx-auto container flex-wrap items-start gap-5 sm:gap-0 ">
+                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px]">
+                                Empower, the IBMF Manila North Sector Youth Development, leads the next
+                                generation to Christ through youth camps, training, and seminars.
+                            </p>
+                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px]">
+                                We connect youth with nearby IBMF churches, fostering faith, leadership, and
+                                spiritual growth all for God&apos;s glory.
+                            </p>
+                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px]">
+                                Through weekly podcasts, Empower brings faith-filled conversations to youth
+                                wherever they are
+                            </p>
+                        </div>
+                        <div className="md:pl-[5%] xl:pl-[180px] mx-auto container ">
+                            <div className=" pt-10">
+                                <Link
+                                    href={"/"}
+                                    className="px-8 py-3 border-[1px] border-black text-base lg:text-xl text-black font-bold"
+                                >
+                                    Get to know us better
+                                </Link>
+                            </div>
+                        </div>
+                    </div> */}
+                    <div className="max-w-sm sm:max-w-full py-6  grid gap-y-10 text-dark-gray dark:text-primary-cream-color">
+                        <div className="mx-auto container grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-0 items-start ">
+                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] mx-auto">
+                                Empower, the IBMF Manila North Sector Youth Development, leads the next
+                                generation to Christ through youth camps, training, and seminars.
+                            </p>
+                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] mx-auto">
+                                We connect youth with nearby IBMF churches, fostering faith, leadership, and
+                                spiritual growth all for God&apos;s glory.
+                            </p>
+                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] mx-auto">
+                                Through weekly podcasts, Empower brings faith-filled conversations to youth
+                                wherever they are
+                            </p>
+                        </div>
+                        <div className="container mx-auto relative">
+                            <div className="lg:absolute left-16">
+                                <Link
+                                    href={"/about"}
+                                    className="px-8 py-3 border-[1px] border-black dark:border-primary-cream-color text-base text-dark-gray dark:text-primary-cream-color lg:text-xl font-bold"
+                                >
+                                    Get to know us better
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {/* ministries */}
+            <section className=" ">
+                <div className="p-[5%] relative ">
+                    <div className="container mx-auto">
+                        <h1 className="relative z-10 inline-block font-black font-sans text-dark-gray dark:text-primary-cream-color md:text-7xl xl:text-9xl text-5xl after:content-[''] after:absolute after:bottom-0 after:right-0 after:translate-x-1/2 after:translate-y-1/4 after:p-3 after:bg-red-primary after:-z-10 xl:after:p-10 ">
+                            ministries
+                        </h1>
+                    </div>
+                </div>
+                <div className="pb-[5%] ">
+                    <Swiper
+                        modules={[Navigation, Pagination, A11y]}
+                        spaceBetween={24}
+                        slidesPerView={1}
+                        grabCursor={true}
+                        navigation={true}
+                        className=" py-12 "
+                        breakpoints={{
+                            640: {
+                                slidesPerView: 1,
+                                spaceBetween: 24,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            1440: {
+                                slidesPerView: 3,
+                            },
+                        }}
+                    >
+                        <SwiperSlide className="">
+                            <MinistryCard
+                                title="Empower youth"
+                                image={empowerYouth}
+                                description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
+                            ></MinistryCard>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MinistryCard
+                                title="Empower pro"
+                                image={empowerYouth}
+                                description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
+                            ></MinistryCard>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MinistryCard
+                                title="Empower pro max"
+                                image={empowerYouth}
+                                description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
+                            ></MinistryCard>
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <MinistryCard
+                                title="Empower gold"
+                                image={empowerYouth}
+                                description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
+                            ></MinistryCard>
+                        </SwiperSlide>
+                    </Swiper>
+                </div>
+            </section>
+            {/* events */}
+            <div className="p-[5%]">
+                <div className="container mx-auto ">
+                    <h1 className="relative z-10 inline-block font-black font-sans text-dark-gray dark:text-primary-cream-color md:text-7xl xl:text-9xl text-5xl after:content-[''] after:absolute after:bottom-0 after:right-0 after:translate-x-1/2 after:translate-y-1/4 after:p-3 after:bg-red-primary after:-z-10 xl:after:p-10 lg:mb-[5%]">
+                        events
+                    </h1>
+                </div>
+
+                <div className="grid pt-10">
+                    {eventsList.slice(0, 3).map((event) => (
+                        <div className="relative" key={event.id}>
+                            <div className=" before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[1px] before:bg-dark-gray dark:before:bg-foreground p-3"></div>
+                            <div className="grid gap-5 lg:gap-24  sm:grid-cols-2 sm:pb-6 ">
+                                <div className="relative">
+                                    {/* <div className=" before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[1px] before:bg-dark-gray dark:before:bg-foreground p-3"></div> */}
+                                    <Image
+                                        src={event.image}
+                                        width={100}
+                                        height={100}
+                                        objectFit="cover"
+                                        alt="events image"
+                                        className="w-full md:max-w-[340px] lg:max-w-[376px]"
+                                    />
+                                </div>
+                                <div className="font-sans flex flex-col justify-between">
+                                    <span className="text-sm-20 text-dark-gray dark:text-primary-cream-color">
+                                        {event.eventDate}
+                                    </span>
+                                    <div className="py-3 lg:py-0 ">
+                                        <p className="text-base text-sm-20 text-dark-gray dark:text-primary-cream-color lg:text-xl-32 font-bold ">
+                                            {event.title}
+                                        </p>
+                                        <p className="text-base text-sm-20 text-dark-gray dark:text-primary-cream-color">
+                                            {event.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+                {/* contact */}
+            <div className="p-[5%] flex justify-center items-center ">
+                <div className="container mx-auto max-w-[350px] md:max-w-[420px] xl:max-w-[995px] pb-16 xl:p-[5%] ">
+                    <p className="text-5xl md:text-64 xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter leading-none  ">
+                        let’s{" "}
+                        <span className="text-5xl md:text-64 xl:text-9xl text-red-primary font-sans font-bold tracking-tighter  ">
+                            empower
+                        </span>
+                    </p>
+                    <p className="text-5xl md:text-64 xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter text-right -ml-2 -mt-2.5 ">
+                        your journey
+                    </p>
+                    <p className="font-sans font-medium text-dark-gray dark:text-primary-cream-color text-sm-20 text-center p-4 leading-tight xl:text-5xl">
+                        We believe God has a purpose for your life — and you don’t have to walk it alone.
+                    </p>
+                    <div className="text-center">
+                        <Link
+                            href={"/"}
+                            className=" p-2 text-sm-20 xl:text-xl-32 text-red-primary border-b-[1px] border-red-primary "
+                        >
+                            Send us a message
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
 }
