@@ -6,7 +6,7 @@ import aboutBanner from "../../../public/about-banner-img.png";
 import whoImage from "../../../public/who-img.png";
 import visionImgae from "../../../public/vision-img.png";
 import missionImage from "../../../public/mission-img.png";
-import Link from "next/link";
+
 import ScrollToTop from "@/components/scrollToTop";
 import { teamList } from "@/data/our_team";
 //swiper

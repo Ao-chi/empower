@@ -5,8 +5,8 @@ import Image from "next/image";
 import eventsHero from "../../../public/events-banner.png";
 import featuredEventImage from "../../../public/events-featured.png";
 import { eventsList } from "@/data/events";
-import { formatDate, getDay, parseDate } from "@/uitls/utils";
-import Link from "next/link";
+import { parseDate } from "@/uitls/utils";
+
 import ScrollToTop from "@/components/scrollToTop";
 
 export default function EventsPage() {
