@@ -15,7 +15,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination } from "swiper/modules";
 import "swiper/css"; // Core Swiper styles
 import "swiper/css/pagination";
-import { getDay } from "@/uitls/utils";
 import ScrollToTop from "@/components/scrollToTop";
 
 export default function Home() {
