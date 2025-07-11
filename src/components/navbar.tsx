@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 import empowerIcon from "../../public/empower.svg";
 import ThemeToggler from "./theme-toggler";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
     const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false);
@@ -24,7 +24,6 @@ export default function Navbar() {
                 <Link href={"/"} className="flex justify-start">
                     <Image priority src={empowerIcon} alt="empower_icon" className="w-[140px] lg:w-[203px]" />
                 </Link>
-
                 {/* mobile burger */}
                 <div className="flex justify-center items-center lg:hidden z-20">
                     <button
@@ -33,11 +32,16 @@ export default function Navbar() {
                             console.log(isMobileNavOpen);
                         }}
                     >
-                        <FontAwesomeIcon icon={faBars} className="text-2xl text-primary-cream-color" />
+                        {!isMobileNavOpen ? (
+                            <FontAwesomeIcon icon={faBars} className="text-2xl text-primary-cream-color" />
+                        ) : (
+                            <FontAwesomeIcon icon={faXmark} className="text-2xl text-primary-cream-color" />
+                        )}
                     </button>
                 </div>
+                {/* mobile nav */}
                 <div
-                    className={`lg:hidden bg-background dark:bg-background absolute top-0 right-0 left-0 bottom-0 overflow-hidden ease-in-out transition-all duration-200 ${
+                    className={`lg:hidden bg-background dark:bg-background absolute top-0 right-0 left-0 bottom-0 overflow-hidden ease-in-out transition-all  duration-200  ${
                         isMobileNavOpen ? "h-screen" : "h-0"
                     }`}
                 >
@@ -103,18 +107,18 @@ export default function Navbar() {
                             >
                                 Contact Us
                             </Link>
-                            <div className=" text-primary-cream-color px-3 w-[24px] relative">
+                            <div className=" text-primary-cream-color px-3 w-[24px] relative mt-3">
                                 <ThemeToggler />
                             </div>
                         </div>
                     </div>
                 </div>
                 {/* desktop */}
-                <div className=" hidden lg:flex">
+                <div className="hidden lg:flex">
                     <div className="flex font-nunito">
                         <Link
                             href={"/"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-lg px-3 content-center hover:text-red-primary link ${
+                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
                                 pathname === "/" ? "text-red-primary" : "text-primary-cream-color"
                             }`}
                         >
@@ -122,7 +126,7 @@ export default function Navbar() {
                         </Link>
                         <Link
                             href={"/about"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-lg px-3 content-center hover:text-red-primary link ${
+                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
                                 pathname === "/about" ? "text-red-primary" : "text-primary-cream-color"
                             }`}
                         >
@@ -130,7 +134,7 @@ export default function Navbar() {
                         </Link>
                         <Link
                             href={"/ministries"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-lg px-3 content-center hover:text-red-primary link ${
+                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
                                 pathname === "/ministries" ? "text-red-primary" : "text-primary-cream-color"
                             }`}
                         >
@@ -138,7 +142,7 @@ export default function Navbar() {
                         </Link>
                         <Link
                             href={"/events"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-lg px-3 content-center hover:text-red-primary link ${
+                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
                                 pathname === "/events" ? "text-red-primary" : "text-primary-cream-color"
                             }`}
                         >
@@ -146,7 +150,7 @@ export default function Navbar() {
                         </Link>
                         <Link
                             href={"/get-involved"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-lg px-3 content-center hover:text-red-primary link ${
+                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
                                 pathname === "/get-involved" ? "text-red-primary" : "text-primary-cream-color"
                             }`}
                         >
@@ -154,7 +158,7 @@ export default function Navbar() {
                         </Link>
                         <Link
                             href={"/contact-us"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-lg px-3 content-center hover:text-red-primary link ${
+                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
                                 pathname === "/contact-us" ? "text-red-primary" : "text-primary-cream-color"
                             }`}
                         >

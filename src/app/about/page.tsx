@@ -7,6 +7,13 @@ import whoImage from "../../../public/who-img.png";
 import visionImgae from "../../../public/vision-img.png";
 import missionImage from "../../../public/mission-img.png";
 import Link from "next/link";
+import ScrollToTop from "@/components/scrollToTop";
+import { teamList } from "@/data/our_team";
+//swiper
+import { Swiper, SwiperSlide } from "swiper/react";
+import { A11y, Navigation, Pagination } from "swiper/modules";
+import "swiper/css"; // Core Swiper styles
+import "swiper/css/pagination";
 
 export default function About() {
     return (
@@ -158,8 +165,8 @@ export default function About() {
                 </div>
             </section>
             {/* meet the team */}
-            <section>
-                <div className="p-[5%] relative ">
+            <section className="">
+                <div className="p-5p pb-0">
                     <div className="container mx-auto">
                         <h1 className="relative z-10  text-center text-red-primary font-sans font-black text-4xl lg:text-5xl mb-1 lg:mb-3 ">
                             meet the team
@@ -169,8 +176,42 @@ export default function About() {
                         </p>
                     </div>
                 </div>
+                <div className="">
+                    <Swiper
+                        modules={[Navigation, Pagination, A11y]}
+                        spaceBetween={50}
+                        slidesPerView={1}
+                        grabCursor={true}
+                        navigation={true}
+                    >
+                        {teamList.map((team) => (
+                            <SwiperSlide key={team.id}>
+                                <div className="flex flex-col gap-10">
+                                    <div>
+                                        <p className="font-sans font-bold text-2xl md:text-xl-32 text-dark-gray dark:text-primary-cream-color -mb-2">
+                                            {team.name}
+                                        </p>
+                                        <span className="font-sans font-bold text-base md:text-18 text-dark-gray dark:text-primary-cream-color">
+                                            {team.title}
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <Image
+                                            src={team.image}
+                                            width={130}
+                                            height={130}
+                                            alt="our team image"
+                                            objectFit="cover"
+                                            className="w-full"
+                                        />
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
             </section>
-
+            <section className="p-5p"></section>
             {/* cta */}
             <section className="p-[5%]">
                 <div className="container mx-auto">
@@ -193,15 +234,17 @@ export default function About() {
                         testimonies, and teachings to inspire youth wherever they are.
                     </p>
                     <div className=" pt-5  justify-self-end md:justify-self-start pr-5 flex-wrap flex col-start-2">
-                        <Link
-                            href={"/about"}
+                        <a
+                            href={"https://www.facebook.com/EMPOWER.Ministry"}
+                            target="_blank"
                             className="px-8 py-3 bg-red-primary rounded-2xl text-base lg:text-xl text-primary-cream-color font-sans hover:bg-red-dark"
                         >
                             Listen on Facebook
-                        </Link>
+                        </a>
                     </div>
                 </div>
             </section>
+            <ScrollToTop />
         </main>
     );
 }

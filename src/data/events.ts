@@ -24,8 +24,16 @@ export const eventsList: IEvents[] = [
     },
     {
         id: 4,
-        title: "2025 IBMF Talent Fest",
-        eventDate: "2025-08-15",
+        title: "2025 IBMF Youth Talent Fest",
+        eventDate: "2025-08-16",
+        image: "/events.png",
+        description:
+            "Unleash the stars! Join us for an evening of incredible youth talent. Prepare to be amazed by singing, dancing, and more.",
+    },
+    {
+        id: 5,
+        title: "2025 IBMF Adult Talent Fest",
+        eventDate: "2025-09-13",
         image: "/events.png",
         description:
             "Unleash the stars! Join us for an evening of incredible youth talent. Prepare to be amazed by singing, dancing, and more.",

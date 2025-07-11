@@ -11,6 +11,7 @@ import youth2Image from "../../../public/youth2.png";
 import empowerProImage from "../../../public/empower-pro-xl.png";
 import empowerPromaxGoldImage from "../../../public/empower-promax-gold.png";
 import Link from "next/link";
+import ScrollToTop from "@/components/scrollToTop";
 
 export default function Ministries() {
     return (
@@ -233,6 +234,7 @@ export default function Ministries() {
                     </div>
                 </div>
             </section>
+            <ScrollToTop />
         </main>
     );
 }

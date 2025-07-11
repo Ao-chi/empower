@@ -1,5 +1,7 @@
+"use client";
 import * as React from "react";
 import Link from "next/link";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons/faFacebook";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
@@ -11,40 +13,48 @@ export default function Footer() {
                 {/* explore */}
                 <div>
                     <div className="flex flex-col">
-                        <h2 className="font-sans text-white text-4xl px-3 py-5">Explore</h2>
+                        <h2 className="font-sans font-medium text-white text-2xl md:text-4xl px-3 py-5">
+                            Explore
+                        </h2>
                         <Link
                             href={"/"}
-                            className="font-nunito text-gray-light text-[20px] p-3 content-center"
+                            className={`font-nunito text-gray-light text-[20px] p-3 content-center hover:text-red-primary  
+                            }`}
                         >
                             Home
                         </Link>
                         <Link
-                            href={"/empower"}
-                            className="font-nunito text-gray-light text-[20px] p-3 content-center"
+                            href={"/about"}
+                            className={`font-nunito text-gray-light text-[20px] p-3 content-center hover:text-red-primary  
+                            }`}
                         >
                             About
                         </Link>
                         <Link
-                            href={"/empower"}
-                            className="font-nunito text-gray-light text-[20px] p-3 content-center"
+                            href={"/ministries"}
+                            className={`font-nunito text-gray-light text-[20px] p-3 content-center hover:text-red-primary  
+                            }`}
                         >
                             Ministries
                         </Link>
                         <Link
-                            href={"/empower"}
-                            className="font-nunito text-gray-light text-[20px] p-3 content-center"
+                            href={"/events"}
+                            className={`font-nunito text-gray-light text-[20px] p-3 content-center hover:text-red-primary  
+                            }`}
                         >
                             Events
                         </Link>
                         <Link
-                            href={"/empower"}
-                            className="font-nunito text-gray-light text-[20px] p-3 content-center"
+                            href={"/get-involved"}
+                            className={`font-nunito text-gray-light text-[20px] p-3 content-center hover:text-red-primary  
+                            }`}
                         >
                             Get Involved
                         </Link>
                         <Link
-                            href={"/empower"}
-                            className="font-nunito text-gray-light text-[20px] p-3 content-center"
+                            href={"/contact-us"}
+                            className={`font-nunito text-gray-light text-[20px] p-3 content-center hover:text-red-primary   
+                            }`}
                         >
                             Contact Us
                         </Link>
@@ -52,12 +62,20 @@ export default function Footer() {
                 </div>
                 {/* follow us */}
                 <div className="flex flex-col">
-                    <h2 className="font-sans text-white text-4xl px-3 py-5 xl:pb-5">Follow Us</h2>
+                    <h2 className="font-sans font-medium text-white text-2xl md:text-4xl px-3 py-5 xl:pb-5">
+                        Follow Us
+                    </h2>
                     <div>
-                        <Link href={"/"} className="font-nunito text-gray-light p-3 content-center">
+                        <a
+                            href={"/https://www.facebook.com/EMPOWER.Ministry"}
+                            className="font-nunito text-gray-light p-3 content-center hover:text-red-primary transition-all duration-75"
+                        >
                             <FontAwesomeIcon icon={faFacebook} className="text-4xl" />
-                        </Link>
-                        <Link href={"/empower"} className="font-nunito text-gray-light  p-3 content-center">
+                        </a>
+                        <Link
+                            href={"/empower"}
+                            className="font-nunito text-gray-light  p-3 content-center hover:text-red-primary "
+                        >
                             <FontAwesomeIcon icon={faYoutube} className="text-4xl" />
                         </Link>
                     </div>

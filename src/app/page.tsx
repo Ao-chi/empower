@@ -15,6 +15,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination } from "swiper/modules";
 import "swiper/css"; // Core Swiper styles
 import "swiper/css/pagination";
+import { getDay } from "@/uitls/utils";
+import ScrollToTop from "@/components/scrollToTop";
 
 export default function Home() {
     return (
@@ -58,12 +60,16 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className="pt-10  flex justify-end">
-                                <Link
-                                    href={"/"}
-                                    className="px-8 py-2 border-2 border-primary-cream-color text-[14px] lg:text-xl text-primary-cream-color"
+                                <a
+                                    href={"https://www.facebook.com/EMPOWER.Ministry"}
+                                    target="_blank"
+                                    className="px-8 py-2 border-2 border-primary-cream-color text-[14px] lg:text-xl text-primary-cream-color overflow-hidden relative group cursor-pointer hover:border-dark-gray"
                                 >
-                                    Watch us on Facebook
-                                </Link>
+                                    <span className="absolute inset-0 bg-dark-gray translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 z-0"></span>
+                                    <span className="relative z-10 group-hover:text-primary-cream-color transition-colors duration-500">
+                                        Watch us on Facebook
+                                    </span>
+                                </a>
                             </div>
                         </div>
                         <div className=" order-2 pt-10">
@@ -135,12 +141,15 @@ export default function Home() {
                             </p>
                         </div>
                         <div className="container mx-auto relative">
-                            <div className="lg:absolute left-16">
+                            <div className="">
                                 <Link
                                     href={"/about"}
-                                    className="px-8 py-3 border-[1px] border-black dark:border-primary-cream-color text-base text-dark-gray dark:text-primary-cream-color lg:text-xl font-bold"
+                                    className="inline-block overflow-hidden relative  group px-8 py-3 border-[1px] border-black dark:border-primary-cream-color text-base text-dark-gray dark:text-primary-cream-color lg:text-xl font-bold cursor-pointer z-0"
                                 >
-                                    Get to know us better
+                                    <span className="absolute inset-0 bg-primary-cream-color -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-500 z-10"></span>
+                                    <span className="relative z-20 group-hover:text-dark-gray transition-colors duration-500">
+                                        Get to know us better
+                                    </span>
                                 </Link>
                             </div>
                         </div>
@@ -275,6 +284,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <ScrollToTop />
         </main>
     );
 }
