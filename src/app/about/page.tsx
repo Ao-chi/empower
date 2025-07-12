@@ -14,6 +14,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { A11y, Navigation, Pagination } from "swiper/modules";
 import "swiper/css"; // Core Swiper styles
 import "swiper/css/pagination";
+import { customPagination } from "@/components/paginationBullets";
 
 export default function About() {
     return (
@@ -183,6 +184,15 @@ export default function About() {
                         slidesPerView={1}
                         grabCursor={true}
                         navigation={true}
+                        pagination={customPagination}
+                        breakpoints={{
+                            768: {
+                                slidesPerView: 2,
+                            },
+                            1440: {
+                                slidesPerView: 3,
+                            },
+                        }}
                     >
                         {teamList.map((team) => (
                             <SwiperSlide key={team.id}>

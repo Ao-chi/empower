@@ -64,3 +64,17 @@ body {
 .swiper-slide {
     overflow: visible;
 }
+
+.swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    background: var(--color-red-400) !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--color-red-primary) !important;
+}
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+    bottom: 0 !important;
+}

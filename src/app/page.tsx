@@ -98,55 +98,30 @@ export default function Home() {
                             God&apos;s glory
                         </p>
                     </div>
-                    {/* <div className="max-w-sm sm:max-w-full py-6 md:p-6">
-                        <div className="flex flex-col sm:flex-row justify-between sm:justify-evenly  mx-auto container flex-wrap items-start gap-5 sm:gap-0 ">
-                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px]">
-                                Empower, the IBMF Manila North Sector Youth Development, leads the next
-                                generation to Christ through youth camps, training, and seminars.
-                            </p>
-                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px]">
-                                We connect youth with nearby IBMF churches, fostering faith, leadership, and
-                                spiritual growth all for God&apos;s glory.
-                            </p>
-                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px]">
-                                Through weekly podcasts, Empower brings faith-filled conversations to youth
-                                wherever they are
-                            </p>
-                        </div>
-                        <div className="md:pl-[5%] xl:pl-[180px] mx-auto container ">
-                            <div className=" pt-10">
-                                <Link
-                                    href={"/"}
-                                    className="px-8 py-3 border-[1px] border-black text-base lg:text-xl text-black font-bold"
-                                >
-                                    Get to know us better
-                                </Link>
-                            </div>
-                        </div>
-                    </div> */}
+
                     <div className="max-w-sm sm:max-w-full py-6  grid gap-y-10 text-dark-gray dark:text-primary-cream-color">
-                        <div className="mx-auto container grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-0 items-start ">
-                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] mx-auto">
+                        <div className="mx-auto container grid grid-cols-1 sm:grid-cols-3 md:grid-cols-8 lg:grid-cols-12 grid-rows-1 gap-4 md:gap-0 lg:gap-16 xl:gap-0 items-start ">
+                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] md:col-span-2   lg:col-start-3 lg:col-span-3">
                                 Empower, the IBMF Manila North Sector Youth Development, leads the next
                                 generation to Christ through youth camps, training, and seminars.
                             </p>
-                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] mx-auto">
+                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] md:col-start-4 md:col-span-2 lg:col-span-3">
                                 We connect youth with nearby IBMF churches, fostering faith, leadership, and
                                 spiritual growth all for God&apos;s glory.
                             </p>
-                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] mx-auto">
+                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] md:col-start-7 md:col-span-2  lg:col-span-3">
                                 Through weekly podcasts, Empower brings faith-filled conversations to youth
                                 wherever they are
                             </p>
                         </div>
-                        <div className="container mx-auto relative">
-                            <div className="">
+                        <div className="container mx-auto relative grid md:grid-cols-4 lg:grid-cols-12 lg:gap-16 xl:gap-0">
+                            <div className="lg:col-start-3 col-span-4 ">
                                 <Link
                                     href={"/about"}
-                                    className="inline-block overflow-hidden relative  group px-8 py-3 border-[1px] border-black dark:border-primary-cream-color text-base text-dark-gray dark:text-primary-cream-color lg:text-xl font-bold cursor-pointer z-0"
+                                    className="inline-block overflow-hidden relative  group px-8 py-3 border-[1px] border-black dark:border-primary-cream-color  cursor-pointer z-0"
                                 >
-                                    <span className="absolute inset-0 bg-primary-cream-color -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-500 z-10"></span>
-                                    <span className="relative z-20 group-hover:text-dark-gray transition-colors duration-500">
+                                    <span className="absolute inset-0 dark:bg-primary-cream-color bg-dark-gray -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-500 z-10"></span>
+                                    <span className="relative z-20 dark:group-hover:text-dark-gray group-hover:text-primary-cream-color transition-colors duration-500">
                                         Get to know us better
                                     </span>
                                 </Link>
@@ -223,39 +198,40 @@ export default function Home() {
                         events
                     </h1>
                 </div>
-
-                <div className="grid pt-10">
-                    {eventsList.slice(0, 3).map((event) => (
-                        <div className="relative" key={event.id}>
-                            <div className=" before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[1px] before:bg-dark-gray dark:before:bg-foreground p-3"></div>
-                            <div className="grid gap-5 lg:gap-24  sm:grid-cols-2 sm:pb-6 ">
-                                <div className="relative">
-                                    {/* <div className=" before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[1px] before:bg-dark-gray dark:before:bg-foreground p-3"></div> */}
-                                    <Image
-                                        src={event.image}
-                                        width={100}
-                                        height={100}
-                                        objectFit="cover"
-                                        alt="events image"
-                                        className="w-full md:max-w-[340px] lg:max-w-[376px]"
-                                    />
-                                </div>
-                                <div className="font-sans flex flex-col justify-between">
-                                    <span className="text-sm-20 text-dark-gray dark:text-primary-cream-color">
-                                        {event.eventDate}
-                                    </span>
-                                    <div className="py-3 lg:py-0 ">
-                                        <p className="text-base text-sm-20 text-dark-gray dark:text-primary-cream-color lg:text-xl-32 font-bold ">
-                                            {event.title}
-                                        </p>
-                                        <p className="text-base text-sm-20 text-dark-gray dark:text-primary-cream-color">
-                                            {event.description}
-                                        </p>
+                <div className="container ml-auto">
+                    <div className="grid pt-10 lg:ml-50">
+                        {eventsList.slice(0, 3).map((event) => (
+                            <div className="relative" key={event.id}>
+                                <div className=" before:content-[''] before:absolute before:top-0 before:left-0  xl:before:left-60 before:right-0 before:h-[1px] before:bg-dark-gray dark:before:bg-foreground p-3"></div>
+                                <div className="grid gap-5 lg:gap-10  sm:grid-cols-2 sm:pb-6 ">
+                                    <div className="relative justify-items-end">
+                                        {/* <div className=" before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-[1px] before:bg-dark-gray dark:before:bg-foreground p-3"></div> */}
+                                        <Image
+                                            src={event.image}
+                                            width={100}
+                                            height={100}
+                                            objectFit="cover"
+                                            alt="events image"
+                                            className="w-full md:max-w-[340px] lg:max-w-[376px] justify-end"
+                                        />
+                                    </div>
+                                    <div className="font-sans flex flex-col justify-between">
+                                        <span className="text-sm-20 text-dark-gray dark:text-primary-cream-color">
+                                            {event.eventDate}
+                                        </span>
+                                        <div className="py-3 lg:py-0 ">
+                                            <p className="text-base text-sm-20 text-dark-gray dark:text-primary-cream-color lg:text-xl-32 font-bold ">
+                                                {event.title}
+                                            </p>
+                                            <p className="text-base text-sm-20 text-dark-gray dark:text-primary-cream-color">
+                                                {event.description}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
                 {/* contact */}
