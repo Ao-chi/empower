@@ -8,6 +8,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 import { ThemeProvider } from "next-themes";
 
+import Providers from "./provider";
+
 const inter = Inter({
     variable: "--font-inter-sans",
     subsets: ["latin"],
@@ -45,7 +47,10 @@ export default function RootLayout({
             >
                 <ThemeProvider attribute="class" enableSystem={false}>
                     <Navbar />
-                    <main className="flex-1">{children}</main>
+
+                    <main className="flex-1">
+                        <Providers>{children}</Providers>
+                    </main>
                     <Footer />
                 </ThemeProvider>
             </body>

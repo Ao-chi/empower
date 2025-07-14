@@ -86,15 +86,13 @@ export default function Navbar() {
                                 Events
                             </Link>
                             <Link
-                                href={"/get-involved"}
+                                href={"/watch"}
                                 className={`font-medium text-primary-cream-color text-transform: uppercase text-4xl px-3 content-center hover:text-red-primary hover:text-52 link ${
-                                    pathname === "/get-involved"
-                                        ? "text-red-primary "
-                                        : "text-primary-cream-color"
+                                    pathname === "/watch" ? "text-red-primary " : "text-primary-cream-color"
                                 }`}
                                 onClick={() => handleOpenMobileNav()}
                             >
-                                Get Involved
+                                Watch
                             </Link>
                             <Link
                                 href={"/contact-us"}
@@ -149,12 +147,12 @@ export default function Navbar() {
                             Events
                         </Link>
                         <Link
-                            href={"/get-involved"}
+                            href={"/watch"}
                             className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
-                                pathname === "/get-involved" ? "text-red-primary" : "text-primary-cream-color"
+                                pathname === "/watch" ? "text-red-primary" : "text-primary-cream-color"
                             }`}
                         >
-                            Get Involved
+                            Watch
                         </Link>
                         <Link
                             href={"/contact-us"}
