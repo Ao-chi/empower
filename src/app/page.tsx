@@ -17,11 +17,17 @@ import "swiper/css"; // Core Swiper styles
 import "swiper/css/pagination";
 import ScrollToTop from "@/components/scrollToTop";
 
+import * as motion from "motion/react-client";
+
+import { StaggerContainer } from "@/components/staggerContainer";
+import StaggerItem from "@/components/StaggerItem";
+import RevealOnScroll from "@/components/revealOnScroll";
+
 export default function Home() {
     return (
         <main className="mx-auto bg-foreground dark:bg-background ">
-            <div className="bg-red-primary ">
-                <div className="  p-[5%] relative">
+            <section className="bg-red-primary ">
+                <div className="  p-[5%] relative ">
                     <div className="  flex flex-col gap-5 ">
                         <div className="order-1 xl:gap-20 flex flex-col">
                             <div className="relative flex justify-end ">
@@ -72,60 +78,81 @@ export default function Home() {
                             </div>
                         </div>
                         <div className=" order-2 pt-10">
-                            <h1 className="font-bold text-64 xl:text-xl-200 text-primary-cream-color font-playfair absolute -bottom-[15px] lg:-bottom-0 xl:-bottom-[8%]">
+                            <motion.h1
+                                initial={{ y: 75, opacity: 0 }}
+                                whileInView={{ y: 8, opacity: 1 }}
+                                transition={{ delay: 0.2, ease: "easeOut", duration: 0.2 }}
+                                className="font-bold text-64 xl:text-xl-200 text-primary-cream-color font-playfair absolute -bottom-[15px] lg:-bottom-0 xl:-bottom-[8%]"
+                            >
                                 empower
-                            </h1>
+                            </motion.h1>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
             {/* about */}
             <section className="p-[5%] ">
-                <div className="container mx-auto">
-                    <h1 className="font-black font-sans text-64 md:text-9xl xl:text-xl-250 text-center xl:leading-none text-dark-gray dark:text-primary-cream-color">
-                        about us
-                    </h1>
-                </div>
+                <StaggerContainer className="container mx-auto">
+                    <StaggerItem>
+                        <h1 className="font-black font-sans text-64 md:text-9xl xl:text-xl-250 text-center xl:leading-none text-dark-gray dark:text-primary-cream-color">
+                            about us
+                        </h1>
+                    </StaggerItem>
+                </StaggerContainer>
                 <div className=" justify-center xl:py-10 container mx-auto">
-                    <div className="max-w-[300px] md:max-w-[452px] xl:max-w-[845px] lg:text-right mx-auto -mt-5 md:-mt-3 xl:-mt-14 relative">
-                        <h2 className="font-playfair font-medium text-2xl md:text-xl-32 xl:text-6xl text-red-primary xl:leading-20 text-center xl:text-left xl:absolute -left-28">
-                            Fostering faith, leadership,
-                        </h2>
-                        <h2 className="font-playfair font-medium text-2xl md:text-xl-32 xl:text-6xl text-red-primary xl:leading-20 text-center xl:text-left xl:pt-20">
-                            and spiritual growth, all for
-                        </h2>
-                        <p className="font-playfair font-medium text-2xl md:text-xl-32 xl:text-6xl text-red-primary xl:leading-20 text-right">
-                            God&apos;s glory
-                        </p>
-                    </div>
+                    <StaggerContainer className="max-w-[300px] md:max-w-[452px] xl:max-w-[845px] lg:text-right mx-auto -mt-5 md:-mt-3 xl:-mt-14 relative">
+                        <StaggerItem>
+                            <h2 className="font-playfair font-medium text-2xl md:text-xl-32 xl:text-6xl text-red-primary xl:leading-20 text-center xl:text-left xl:absolute -left-28">
+                                Fostering faith, leadership,
+                            </h2>
+                        </StaggerItem>
+                        <StaggerItem>
+                            <h2 className="font-playfair font-medium text-2xl md:text-xl-32 xl:text-6xl text-red-primary xl:leading-20 text-center xl:text-left xl:pt-20">
+                                and spiritual growth, all for
+                            </h2>
+                        </StaggerItem>
+                        <StaggerItem>
+                            <p className="font-playfair font-medium text-2xl md:text-xl-32 xl:text-6xl text-red-primary xl:leading-20 text-right">
+                                God&apos;s glory
+                            </p>
+                        </StaggerItem>
+                    </StaggerContainer>
 
                     <div className="max-w-sm sm:max-w-full py-6  grid gap-y-10 text-dark-gray dark:text-primary-cream-color">
-                        <div className="mx-auto container grid grid-cols-1 sm:grid-cols-3 md:grid-cols-8 lg:grid-cols-12 grid-rows-1 gap-4 md:gap-0 lg:gap-16 xl:gap-0 items-start ">
-                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] md:col-span-2   lg:col-start-3 lg:col-span-3">
-                                Empower, the IBMF Manila North Sector Youth Development, leads the next
-                                generation to Christ through youth camps, training, and seminars.
-                            </p>
-                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] md:col-start-4 md:col-span-2 lg:col-span-3">
-                                We connect youth with nearby IBMF churches, fostering faith, leadership, and
-                                spiritual growth all for God&apos;s glory.
-                            </p>
-                            <p className="text-base md:text-sm-20 xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] md:col-start-7 md:col-span-2  lg:col-span-3">
-                                Through weekly podcasts, Empower brings faith-filled conversations to youth
-                                wherever they are
-                            </p>
-                        </div>
+                        <StaggerContainer className="mx-auto container grid grid-cols-1 sm:grid-cols-3 md:grid-cols-8 lg:grid-cols-12 grid-rows-1 gap-4 md:gap-0 lg:gap-16 xl:gap-0 items-start ">
+                            <StaggerItem className="xl:text-2xl sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] md:col-span-2   lg:col-start-3 lg:col-span-3">
+                                <p className="text-base md:text-sm-20 ">
+                                    Empower, the IBMF Manila North Sector Youth Development, leads the next
+                                    generation to Christ through youth camps, training, and seminars.
+                                </p>
+                            </StaggerItem>
+                            <StaggerItem className="sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] md:col-start-4 md:col-span-2 lg:col-span-3">
+                                <p className="text-base md:text-sm-20 xl:text-2xl">
+                                    We connect youth with nearby IBMF churches, fostering faith, leadership,
+                                    and spiritual growth all for God&apos;s glory.
+                                </p>
+                            </StaggerItem>
+                            <StaggerItem className="sm:max-w-[176px] md:max-w-[200px] lg:max-w-[250px] md:col-start-7 md:col-span-2  lg:col-span-3">
+                                <p className="text-base md:text-sm-20 xl:text-2xl ">
+                                    Through weekly podcasts, Empower brings faith-filled conversations to
+                                    youth wherever they are
+                                </p>
+                            </StaggerItem>
+                        </StaggerContainer>
                         <div className="container mx-auto relative grid md:grid-cols-4 lg:grid-cols-12 lg:gap-16 xl:gap-0">
-                            <div className="lg:col-start-3 col-span-4 ">
-                                <Link
-                                    href={"/about"}
-                                    className="inline-block overflow-hidden relative  group px-8 py-3 border-[1px] border-black dark:border-primary-cream-color  cursor-pointer z-0"
-                                >
-                                    <span className="absolute inset-0 dark:bg-primary-cream-color bg-dark-gray -translate-x-[100%] group-hover:translate-x-0 transition-transform duration-500 z-10"></span>
-                                    <span className="relative z-20 dark:group-hover:text-dark-gray group-hover:text-primary-cream-color transition-colors duration-500">
-                                        Get to know us better
-                                    </span>
-                                </Link>
-                            </div>
+                            <StaggerContainer className="lg:col-start-3 col-span-4 ">
+                                <StaggerItem>
+                                    <Link
+                                        href={"/about"}
+                                        className="inline-block overflow-hidden relative  group px-8 py-3 border-[1px] border-black dark:border-primary-cream-color  cursor-pointer z-0"
+                                    >
+                                        <span className="absolute inset-0 dark:bg-primary-cream-color bg-dark-gray translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 z-10"></span>
+                                        <span className="relative z-20 dark:group-hover:text-dark-gray group-hover:text-primary-cream-color transition-colors duration-500">
+                                            Get to know us better
+                                        </span>
+                                    </Link>
+                                </StaggerItem>
+                            </StaggerContainer>
                         </div>
                     </div>
                 </div>
@@ -133,13 +160,13 @@ export default function Home() {
             {/* ministries */}
             <section className=" ">
                 <div className="p-[5%] relative ">
-                    <div className="container mx-auto">
+                    <RevealOnScroll className="container mx-auto">
                         <h1 className="relative z-10 inline-block font-black font-sans text-dark-gray dark:text-primary-cream-color md:text-7xl xl:text-9xl text-5xl after:content-[''] after:absolute after:bottom-0 after:right-0 after:translate-x-1/2 after:translate-y-1/4 after:p-3 after:bg-red-primary after:-z-10 xl:after:p-10 ">
                             ministries
                         </h1>
-                    </div>
+                    </RevealOnScroll>
                 </div>
-                <div className="pb-[5%] ">
+                <StaggerContainer className="pb-[5%] ">
                     <Swiper
                         modules={[Navigation, Pagination, A11y]}
                         spaceBetween={24}
@@ -161,47 +188,57 @@ export default function Home() {
                         }}
                     >
                         <SwiperSlide className="">
-                            <MinistryCard
-                                title="Empower youth"
-                                image={empowerYouth}
-                                description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
-                            ></MinistryCard>
+                            <StaggerItem>
+                                <MinistryCard
+                                    title="Empower youth"
+                                    image={empowerYouth}
+                                    description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
+                                />
+                            </StaggerItem>
                         </SwiperSlide>
-                        <SwiperSlide>
-                            <MinistryCard
-                                title="Empower pro"
-                                image={empowerYouth}
-                                description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
-                            ></MinistryCard>
+                        <SwiperSlide className="">
+                            <StaggerItem>
+                                <MinistryCard
+                                    title="Empower pro"
+                                    image={empowerYouth}
+                                    description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
+                                />
+                            </StaggerItem>
                         </SwiperSlide>
-                        <SwiperSlide>
-                            <MinistryCard
-                                title="Empower pro max"
-                                image={empowerYouth}
-                                description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
-                            ></MinistryCard>
+                        <SwiperSlide className="">
+                            <StaggerItem>
+                                <MinistryCard
+                                    title="Empower pro max"
+                                    image={empowerYouth}
+                                    description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
+                                />
+                            </StaggerItem>
                         </SwiperSlide>
-                        <SwiperSlide>
-                            <MinistryCard
-                                title="Empower gold"
-                                image={empowerYouth}
-                                description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
-                            ></MinistryCard>
+                        <SwiperSlide className="">
+                            <StaggerItem>
+                                <MinistryCard
+                                    title="Empower gold"
+                                    image={empowerYouth}
+                                    description="Empower, the IBMF Manila North Sector Youth Development, leads the next generation to Christ through youth camps, training, and seminars."
+                                />
+                            </StaggerItem>
                         </SwiperSlide>
                     </Swiper>
-                </div>
+                </StaggerContainer>
             </section>
             {/* events */}
             <div className="p-[5%]">
                 <div className="container mx-auto ">
-                    <h1 className="relative z-10 inline-block font-black font-sans text-dark-gray dark:text-primary-cream-color md:text-7xl xl:text-9xl text-5xl after:content-[''] after:absolute after:bottom-0 after:right-0 after:translate-x-1/2 after:translate-y-1/4 after:p-3 after:bg-red-primary after:-z-10 xl:after:p-10 lg:mb-[5%]">
-                        events
-                    </h1>
+                    <RevealOnScroll>
+                        <h1 className="relative z-10 inline-block font-black font-sans text-dark-gray dark:text-primary-cream-color md:text-7xl xl:text-9xl text-5xl after:content-[''] after:absolute after:bottom-0 after:right-0 after:translate-x-1/2 after:translate-y-1/4 after:p-3 after:bg-red-primary after:-z-10 xl:after:p-10 lg:mb-[5%]">
+                            events
+                        </h1>
+                    </RevealOnScroll>
                 </div>
                 <div className="container ml-auto">
                     <div className="grid pt-10 lg:ml-50">
                         {eventsList.slice(0, 3).map((event) => (
-                            <div className="relative" key={event.id}>
+                            <RevealOnScroll className="relative" key={event.id}>
                                 <div className=" before:content-[''] before:absolute before:top-0 before:left-0  xl:before:left-60 before:right-0 before:h-[1px] before:bg-dark-gray dark:before:bg-foreground p-3"></div>
                                 <div className="grid gap-5 lg:gap-10  sm:grid-cols-2 sm:pb-6 ">
                                     <div className="relative justify-items-end">
@@ -229,35 +266,42 @@ export default function Home() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </RevealOnScroll>
                         ))}
                     </div>
                 </div>
             </div>
                 {/* contact */}
             <div className="p-[5%] flex justify-center items-center ">
-                <div className="container mx-auto max-w-[350px] md:max-w-[420px] xl:max-w-[995px] pb-16 xl:p-[5%] ">
-                    <p className="text-5xl md:text-64 xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter leading-none  ">
-                        let’s{" "}
-                        <span className="text-5xl md:text-64 xl:text-9xl text-red-primary font-sans font-bold tracking-tighter  ">
-                            empower
-                        </span>
-                    </p>
-                    <p className="text-5xl md:text-64 xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter text-right -ml-2 -mt-2.5 ">
-                        your journey
-                    </p>
-                    <p className="font-sans font-medium text-dark-gray dark:text-primary-cream-color text-sm-20 text-center p-4 leading-tight xl:text-5xl">
-                        We believe God has a purpose for your life — and you don’t have to walk it alone.
-                    </p>
-                    <div className="text-center">
+                <StaggerContainer className="container mx-auto max-w-[350px] md:max-w-[420px] xl:max-w-[995px] pb-16 xl:p-[5%] ">
+                    <StaggerItem>
+                        <h1 className="text-5xl md:text-64 xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter leading-none  ">
+                            let’s{" "}
+                            <span className="text-5xl md:text-64 xl:text-9xl text-red-primary font-sans font-bold tracking-tighter  ">
+                                empower
+                            </span>
+                        </h1>
+                    </StaggerItem>
+                    <StaggerItem>
+                        <p className="text-5xl md:text-64 xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter text-right -ml-2 -mt-2.5 ">
+                            your journey
+                        </p>
+                    </StaggerItem>
+                    <StaggerItem>
+                        <p className="font-sans font-medium text-dark-gray dark:text-primary-cream-color text-sm-20 text-center p-4 leading-tight xl:text-5xl">
+                            We believe God has a purpose for your life — and you don’t have to walk it alone.
+                        </p>
+                    </StaggerItem>
+
+                    <StaggerItem className="text-center">
                         <Link
                             href={"/"}
                             className=" p-2 text-sm-20 xl:text-xl-32 text-red-primary border-b-[1px] border-red-primary "
                         >
                             Send us a message
                         </Link>
-                    </div>
-                </div>
+                    </StaggerItem>
+                </StaggerContainer>
             </div>
             <ScrollToTop />
         </main>

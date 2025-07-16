@@ -9,6 +9,8 @@ config.autoAddCss = false;
 import { ThemeProvider } from "next-themes";
 
 import Providers from "./provider";
+// import ReactLenis from "lenis/react";
+import { ReactLenis } from "../uitls/lenis";
 
 const inter = Inter({
     variable: "--font-inter-sans",
@@ -42,18 +44,20 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-            <body
-                className={`${inter.variable} ${archivo.variable} ${playfair.variable} ${nunito.variable} antialiased flex flex-col min-h-screen `}
-            >
-                <ThemeProvider attribute="class" enableSystem={false}>
-                    <Navbar />
+            <ReactLenis root>
+                <body
+                    className={`${inter.variable} ${archivo.variable} ${playfair.variable} ${nunito.variable} antialiased flex flex-col min-h-screen `}
+                >
+                    <ThemeProvider attribute="class" enableSystem={false}>
+                        <Navbar />
 
-                    <main className="flex-1">
-                        <Providers>{children}</Providers>
-                    </main>
-                    <Footer />
-                </ThemeProvider>
-            </body>
+                        <main className="flex-1">
+                            <Providers>{children}</Providers>
+                        </main>
+                        <Footer />
+                    </ThemeProvider>
+                </body>
+            </ReactLenis>
         </html>
     );
 }

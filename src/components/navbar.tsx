@@ -12,6 +12,15 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 export default function Navbar() {
     const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false);
 
+    const navLinks = [
+        { label: "home", link: "/" },
+        { label: "about", link: "/about" },
+        { label: "ministries", link: "/ministries" },
+        { label: "events", link: "/events" },
+        { label: "watch", link: "/watch" },
+        { label: "contact", link: "/contact-us" },
+    ];
+
     const handleOpenMobileNav = () => {
         setIsMobileNavOpen(!isMobileNavOpen);
     };
@@ -114,54 +123,17 @@ export default function Navbar() {
                 {/* desktop */}
                 <div className="hidden lg:flex">
                     <div className="flex font-nunito">
-                        <Link
-                            href={"/"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
-                                pathname === "/" ? "text-red-primary" : "text-primary-cream-color"
-                            }`}
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            href={"/about"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
-                                pathname === "/about" ? "text-red-primary" : "text-primary-cream-color"
-                            }`}
-                        >
-                            About
-                        </Link>
-                        <Link
-                            href={"/ministries"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
-                                pathname === "/ministries" ? "text-red-primary" : "text-primary-cream-color"
-                            }`}
-                        >
-                            Ministries
-                        </Link>
-                        <Link
-                            href={"/events"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
-                                pathname === "/events" ? "text-red-primary" : "text-primary-cream-color"
-                            }`}
-                        >
-                            Events
-                        </Link>
-                        <Link
-                            href={"/watch"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
-                                pathname === "/watch" ? "text-red-primary" : "text-primary-cream-color"
-                            }`}
-                        >
-                            Watch
-                        </Link>
-                        <Link
-                            href={"/contact-us"}
-                            className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
-                                pathname === "/contact-us" ? "text-red-primary" : "text-primary-cream-color"
-                            }`}
-                        >
-                            Contact Us
-                        </Link>
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.label}
+                                href={link.link}
+                                className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
+                                    pathname === link.link ? "text-red-primary" : "text-primary-cream-color"
+                                }`}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                         <div className=" text-primary-cream-color px-3 w-[24px] relative">
                             <ThemeToggler />
                         </div>
