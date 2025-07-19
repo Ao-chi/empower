@@ -29,7 +29,7 @@ export default function About() {
     });
 
     const y = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
-    const scale = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+    const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1.25]);
     // const rotate = useTransform(scrollYProgress, [0, 1], [-5, 0]);
     return (
         <main className="mx-auto bg-foreground dark:bg-background">
@@ -53,6 +53,7 @@ export default function About() {
                             <motion.div
                                 style={{
                                     top: y,
+                                    scale,
                                 }}
                                 className="absolute inset-0"
                             >

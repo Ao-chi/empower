@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { motion, Variants } from "framer-motion";
 
@@ -9,7 +10,7 @@ const childVariants: Variants = {
 
 export default function RevealOnScroll({
     children,
-    delay = 0.2,
+    delay = 0,
     className,
 }: {
     children: React.ReactNode;
@@ -24,7 +25,7 @@ export default function RevealOnScroll({
                 amount: 0.2,
                 // once: true
             }} // triggers when 20% visible
-            transition={{ duration: 0.3, delay }}
+            transition={{ duration: 0.3 }}
             className={className}
             variants={childVariants}
         >

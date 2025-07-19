@@ -10,8 +10,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
+    const [isVisible, setIsVisible] = React.useState(true);
     const [isMobileNavOpen, setIsMobileNavOpen] = React.useState(false);
 
+    React.useEffect(() => {
+        let lastScrollY = window.scrollY;
+
+        const controlNav = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+            lastScrollY = currentScrollY;
+        };
+
+        window.addEventListener("scroll", controlNav);
+        return () => window.removeEventListener("scroll", controlNav);
+    }, []);
     const navLinks = [
         { label: "home", link: "/" },
         { label: "about", link: "/about" },
@@ -27,7 +45,11 @@ export default function Navbar() {
 
     const pathname = usePathname();
     return (
-        <nav className="bg-background dark:bg-background items-center min-h-[75px]  lg:min-h-24 content-center px-[5%] sticky top-0 z-100">
+        <nav
+            className={`bg-background dark:bg-background items-center min-h-[75px]  lg:min-h-24 content-center px-[5%] sticky top-0 z-100 transition-transform duration-300 ${
+                isVisible ? "translate-y-0" : "-translate-y-full"
+            }`}
+        >
             {/* desktop navbar */}
             <div className="container flex justify-between content-center mx-auto">
                 <Link href={"/"} className="flex justify-start">
@@ -56,64 +78,20 @@ export default function Navbar() {
                 >
                     <div className=" flex  h-screen">
                         <div className="flex justify-center items-start font-nunito flex-col w-full p-[5%] gap-5 ">
-                            <Link
-                                href={"/"}
-                                className={`font-medium text-primary-cream-color text-transform: uppercase text-4xl px-3 content-center hover:text-red-primary hover:text-52 link ${
-                                    pathname === "/" ? "text-red-primary" : "text-primary-cream-color"
-                                }`}
-                                onClick={() => handleOpenMobileNav()}
-                            >
-                                Home
-                            </Link>
-                            <Link
-                                href={"/about"}
-                                className={`font-medium text-primary-cream-color text-transform: uppercase text-4xl px-3 content-center hover:text-red-primary hover:text-52 link ${
-                                    pathname === "/about" ? "text-red-primary " : "text-primary-cream-color"
-                                }`}
-                                onClick={() => handleOpenMobileNav()}
-                            >
-                                About
-                            </Link>
-                            <Link
-                                href={"/ministries"}
-                                className={`font-medium text-primary-cream-color text-transform: uppercase text-4xl px-3 content-center hover:text-red-primary hover:text-52 link ${
-                                    pathname === "/ministries"
-                                        ? "text-red-primary "
-                                        : "text-primary-cream-color"
-                                }`}
-                                onClick={() => handleOpenMobileNav()}
-                            >
-                                Ministries
-                            </Link>
-                            <Link
-                                href={"/events"}
-                                className={`font-medium text-primary-cream-color text-transform: uppercase text-4xl px-3 content-center hover:text-red-primary hover:text-52 link ${
-                                    pathname === "/events" ? "text-red-primary " : "text-primary-cream-color"
-                                }`}
-                                onClick={() => handleOpenMobileNav()}
-                            >
-                                Events
-                            </Link>
-                            <Link
-                                href={"/watch"}
-                                className={`font-medium text-primary-cream-color text-transform: uppercase text-4xl px-3 content-center hover:text-red-primary hover:text-52 link ${
-                                    pathname === "/watch" ? "text-red-primary " : "text-primary-cream-color"
-                                }`}
-                                onClick={() => handleOpenMobileNav()}
-                            >
-                                Watch
-                            </Link>
-                            <Link
-                                href={"/contact-us"}
-                                className={`font-medium text-primary-cream-color text-transform: uppercase text-4xl px-3 content-center hover:text-red-primary hover:text-52 link ${
-                                    pathname === "/contact-us"
-                                        ? "text-red-primary "
-                                        : "text-primary-cream-color"
-                                }`}
-                                onClick={() => handleOpenMobileNav()}
-                            >
-                                Contact Us
-                            </Link>
+                            {navLinks.map((link) => (
+                                <Link
+                                    key={link.label}
+                                    href={link.link}
+                                    onClick={() => handleOpenMobileNav()}
+                                    className={`font-medium text-primary-cream-color text-transform: uppercase text-4xl px-3 content-center hover:text-red-primary hover:text-52 transition-all duration-300 link ${
+                                        pathname === link.link
+                                            ? "text-red-primary"
+                                            : "text-primary-cream-color"
+                                    }`}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
                             <div className=" text-primary-cream-color px-3 w-[24px] relative mt-3">
                                 <ThemeToggler />
                             </div>
@@ -127,7 +105,7 @@ export default function Navbar() {
                             <Link
                                 key={link.label}
                                 href={link.link}
-                                className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary link ${
+                                className={`font-medium text-primary-cream-color text-transform: uppercase text-base lg:text-lg px-2 xl:px-4 content-center hover:text-red-primary transition-colors duration-300 link ${
                                     pathname === link.link ? "text-red-primary" : "text-primary-cream-color"
                                 }`}
                             >

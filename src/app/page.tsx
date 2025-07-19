@@ -9,6 +9,8 @@ import { eventsList } from "@/data/events";
 
 //images
 import empowerYouth from "../../public/emp_youth-1.png";
+import empowerGif from "../../public/EMPOWER2.gif";
+import videoBanner from "../../public/Empower_vid (1).gif";
 
 //swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,16 +19,90 @@ import "swiper/css"; // Core Swiper styles
 import "swiper/css/pagination";
 import ScrollToTop from "@/components/scrollToTop";
 
-import * as motion from "motion/react-client";
-
 import { StaggerContainer } from "@/components/staggerContainer";
 import StaggerItem from "@/components/StaggerItem";
 import RevealOnScroll from "@/components/revealOnScroll";
 
+import { useRef } from "react";
+import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import { useEffect, useState } from "react";
+
 export default function Home() {
+    const bannergifRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: bannergifRef,
+        offset: ["start end", "end end"],
+    });
+
+    useMotionValueEvent(scrollYProgress, "change", (val) => {
+        console.log(val);
+    });
+
+    const scale = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
+    const y = useTransform(scrollYProgress, [0, 1], [-520, 0]);
+    const x = useTransform(scrollYProgress, [0, 1], [380, 0]);
+    const borderRadius = useTransform(scrollYProgress, [0, 1], [40, 0]);
+    const rotate = useTransform(scrollYProgress, [0, 1], [-8, 0]);
+
+    // const border = useTransform(scrollYProgress);
     return (
         <main className="mx-auto bg-foreground dark:bg-background ">
-            <section className="bg-red-primary ">
+            <section className=" relative bg-background dark:bg-background md:h-screen">
+                <div className="  relative p-5p  pt-[100px] lg:pt-5 ">
+                    <div className="container mx-auto py-5p">
+                        <RevealOnScroll className="h-full lg:h-[270px] relative lg:mb-10">
+                            <Image
+                                src={empowerGif}
+                                alt="empower gif animation"
+                                // unoptimized={true}
+                                objectFit="cover"
+                                className="mx-auto"
+                                layout="responsive"
+                            />
+                        </RevealOnScroll>
+                        <StaggerContainer className="text-center relative z-50">
+                            <StaggerItem className=" inline">
+                                <p className="font-sans font-bold uppercase text-2xl md:text-5xl lg:text-7xl xl:text-8xl text-primary-cream-color tracking-tight leading-snug inline ">
+                                    connect,
+                                </p>
+                            </StaggerItem>
+                            <StaggerItem className="inline">
+                                <p className="font-sans font-bold uppercase text-2xl md:text-5xl lg:text-7xl xl:text-8xl text-primary-cream-color tracking-tight leading-snug inline">
+                                    grow and lead for God’s glory
+                                </p>
+                            </StaggerItem>
+                        </StaggerContainer>
+                    </div>
+                </div>
+            </section>
+            <section ref={bannergifRef} className="relative">
+                {/* Sticky Image Section */}
+                <motion.div
+                    className="sticky top-0 z-10 flex justify-center items-center mx-auto lg:min-h-screen "
+                    style={{ borderRadius: borderRadius }}
+                >
+                    <motion.div
+                        className="flex justify-center items-center w-full h-full overflow-hidden"
+                        style={{
+                            y,
+                            // x,
+                            scale,
+                            borderRadius: borderRadius,
+                            rotate,
+                        }}
+                    >
+                        <Image
+                            src={videoBanner}
+                            alt="video banner"
+                            objectFit="cover"
+                            className="w-full h-full"
+                            // sizes="(max-width: 768px) 100vw, 80vw"
+                        />
+                    </motion.div>
+                </motion.div>
+            </section>
+            {/* <section className="bg-red-primary  ">
                 <div className="  p-[5%] relative ">
                     <div className="  flex flex-col gap-5 ">
                         <div className="order-1 xl:gap-20 flex flex-col">
@@ -70,8 +146,8 @@ export default function Home() {
                                     target="_blank"
                                     className="px-8 py-2 border-2 border-primary-cream-color text-[14px] lg:text-xl text-primary-cream-color overflow-hidden relative group cursor-pointer hover:border-dark-gray"
                                 >
-                                    <span className="absolute inset-0 bg-dark-gray translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 z-0"></span>
-                                    <span className="relative z-10 group-hover:text-primary-cream-color transition-colors duration-500">
+                                    <span className="absolute inset-0 bg-dark-gray translate-y-[100%] group-hover:translate-y-0 transition-transform duration-400 z-0"></span>
+                                    <span className="relative z-10 group-hover:text-primary-cream-color transition-colors duration-400">
                                         Watch us on Facebook
                                     </span>
                                 </a>
@@ -89,10 +165,10 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             {/* about */}
             <section className="p-[5%] ">
-                <StaggerContainer className="container mx-auto">
+                <StaggerContainer className="container mx-auto pt-5p">
                     <StaggerItem>
                         <h1 className="font-black font-sans text-64 md:text-9xl xl:text-xl-250 text-center xl:leading-none text-dark-gray dark:text-primary-cream-color">
                             about us
@@ -146,7 +222,7 @@ export default function Home() {
                                         href={"/about"}
                                         className="inline-block overflow-hidden relative  group px-8 py-3 border-[1px] border-black dark:border-primary-cream-color  cursor-pointer z-0"
                                     >
-                                        <span className="absolute inset-0 dark:bg-primary-cream-color bg-dark-gray translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 z-10"></span>
+                                        <span className="absolute inset-0 dark:bg-primary-cream-color bg-dark-gray translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-out z-10"></span>
                                         <span className="relative z-20 dark:group-hover:text-dark-gray group-hover:text-primary-cream-color transition-colors duration-500">
                                             Get to know us better
                                         </span>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useRef } from "react";
 
 import minsistryBanner from "../../../public/ministry_banner-desktop.png";
 import minsistryBannerxl from "../../../public/ministry_banner-xl.png";
@@ -18,18 +18,31 @@ import RevealOnScroll from "@/components/revealOnScroll";
 import { StaggerContainer } from "@/components/staggerContainer";
 import StaggerItem from "@/components/StaggerItem";
 import BannerParallax from "@/components/BannerParallax";
+import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "motion/react";
 
 export default function Ministries() {
+    const sectionRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"],
+    });
+
+    useMotionValueEvent(scrollYProgress, "change", (val) => {
+        console.log(val);
+    });
+
+    const scaleX = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
     return (
         <main className="mx-auto bg-foreground dark:bg-background">
             {/* hero section */}
             <section className="pt-[5%]">
                 <div className="relative">
-                    <RevealOnScroll className="text-center">
-                        <h1 className="text-dark-gray dark:text-primary-cream-color text-64 md:text-9xl xl:text-heading font-sans font-bold  -mb-7 xl:-mb-10 relative z-10">
+                    <div className="text-center">
+                        <RevealOnScroll className="text-dark-gray dark:text-primary-cream-color text-64 md:text-9xl xl:text-heading font-sans font-bold  -mb-7 xl:-mb-10 relative z-20">
                             ministries
-                        </h1>
-                    </RevealOnScroll>
+                        </RevealOnScroll>
+                    </div>
                     <BannerParallax
                         src={minsistryBannerxl}
                         title="ministries page banner image"
@@ -37,6 +50,8 @@ export default function Ministries() {
                         imgStyle="w-full"
                         translateYStart="-20%"
                         translateYEnd="20%"
+                        scaleStart={1}
+                        scaleEnd={1.25}
                     />
                     {/* <div className="relative p-[15.5%] ">
                         <Image
@@ -54,8 +69,15 @@ export default function Ministries() {
             </section>
             <section className="p-[5%] mb-[5%]"></section>
             {/* /podcast section */}
-            <section className="p-[5%] bg-background dark:bg-background ">
-                <StaggerContainer className="container mx-auto py-[5%]">
+            <section className="p-[5%] relative overflow-hidden" ref={sectionRef}>
+                <motion.div
+                    style={{
+                        scaleX,
+                        originX: 0.5,
+                    }}
+                    className="absolute top-0 bottom-0 left-0 w-full bg-background dark:bg-background z-0"
+                />
+                <StaggerContainer className="container mx-auto py-[5%] relative z-30">
                     <StaggerItem className="mb-2 md:mb-5 pt-[5%]">
                         <Image
                             src={empowerMinistryImage}
@@ -151,8 +173,8 @@ export default function Ministries() {
                 <div className="container mx-auto xl:max-w-7xl ">
                     <div className="grid md:grid-cols-2 md:grid-flow-row-dense gap-2 md:gap-7 xl:gap-10">
                         <StaggerContainer className=" flex  md:flex-col px-[5%] md:px-0 ">
-                            <StaggerItem className="ext-4xl md:text-6xl xl:text-9xl inline-block md:text-right leading-none">
-                                <h2 className="text-dark-gray dark:text-red-primary font-sans font-black t">
+                            <StaggerItem className="text-4xl md:text-6xl xl:text-9xl inline-block md:text-right leading-none">
+                                <h2 className="text-dark-gray dark:text-red-primary font-sans font-black ">
                                     empower
                                 </h2>
                             </StaggerItem>

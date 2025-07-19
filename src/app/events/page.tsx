@@ -27,7 +27,7 @@ export default function EventsPage() {
                     className="p-[20.5%]"
                     translateYStart="-45%"
                     translateYEnd="10%"
-                    scaleStart={0.6}
+                    scaleStart={0.8}
                     scaleEnd={1.45}
                 />
                 {/* <Image src={eventsHero} objectFit="cover" alt="events hero image" className="w-full -z-0" /> */}

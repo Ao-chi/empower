@@ -11,7 +11,7 @@
 *::before,
 *::after {
     box-sizing: inherit;
-    transition: ease-out;
+    /* transition: ease-out; */
 }
 
 @theme inline {
