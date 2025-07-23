@@ -51,6 +51,7 @@ export default function BannerParallax({
                         objectFit="cover"
                         className={`absolute top-0 right-0 bottom-0 left-0 ${imgStyle}`}
                         loading="lazy"
+                        placeholder="blur"
                     />
                 </motion.div>
             </div>

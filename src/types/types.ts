@@ -5,7 +5,7 @@ export interface IEvents {
     title: string;
     description?: string;
     eventDate: string;
-    image?: string;
+    image: string;
 }
 
 export interface ITeam {

@@ -45,7 +45,6 @@ export default function Home() {
     const borderRadius = useTransform(scrollYProgress, [0, 1], [40, 0]);
     const rotate = useTransform(scrollYProgress, [0, 1], [-8, 0]);
 
-    // const border = useTransform(scrollYProgress);
     return (
         <main className="mx-auto bg-foreground dark:bg-background ">
             <section className=" relative bg-background dark:bg-background md:h-screen">
@@ -59,6 +58,7 @@ export default function Home() {
                                 objectFit="cover"
                                 className="mx-auto"
                                 layout="responsive"
+                                // placeholder="blur"
                             />
                         </RevealOnScroll>
                         <StaggerContainer className="text-center relative z-50">
@@ -326,6 +326,9 @@ export default function Home() {
                                             objectFit="cover"
                                             alt="events image"
                                             className="w-full md:max-w-[340px] lg:max-w-[376px] justify-end"
+                                            loading="lazy"
+                                            placeholder="blur"
+                                            blurDataURL="data:image/png"
                                         />
                                     </div>
                                     <div className="font-sans flex flex-col justify-between">
@@ -349,17 +352,17 @@ export default function Home() {
             </div>
                 {/* contact */}
             <div className="p-[5%] flex justify-center items-center ">
-                <StaggerContainer className="container mx-auto max-w-[350px] md:max-w-[420px] xl:max-w-[995px] pb-16 xl:p-[5%] ">
+                <StaggerContainer className="container mx-auto max-w-[350px] md:max-w-[520px] xl:max-w-[995px] pb-16 xl:p-[5%] ">
                     <StaggerItem>
-                        <h1 className="text-5xl md:text-64 xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter leading-none  ">
+                        <h1 className="text-5xl md:text-7xl xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter leading-none  ">
                             let’s{" "}
-                            <span className="text-5xl md:text-64 xl:text-9xl text-red-primary font-sans font-bold tracking-tighter  ">
+                            <span className="text-5xl md:text-7xl xl:text-9xl text-red-primary font-sans font-bold tracking-tighter  ">
                                 empower
                             </span>
                         </h1>
                     </StaggerItem>
                     <StaggerItem>
-                        <p className="text-5xl md:text-64 xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter text-right -ml-2 -mt-2.5 ">
+                        <p className="text-5xl md:text-7xl xl:text-9xl text-dark-gray dark:text-primary-cream-color font-sans font-bold tracking-tighter text-right -ml-2 -mt-2.5 ">
                             your journey
                         </p>
                     </StaggerItem>

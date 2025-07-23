@@ -26,6 +26,9 @@ export default function MinistryCard({ title, description, image, action }: Card
                             objectFit="contain"
                             alt="empower youth image"
                             className=" relative z-0 group-hover:scale-110 transition-all duration-500 "
+                            placeholder="blur"
+                            blurDataURL="data:image/png"
+                            loading="lazy"
                         />
                     )}
                 </div>
